@@ -16,8 +16,13 @@ export const getUsers=async(request,response)=>{
 
 
 export const addUsers=async(request,response)=>{
-    const User = request.body;
-    console.log(User)
+
+    const username=request.body.username ;
+    const User = await user.findOne({username});
+
+     if(User)
+     response.status(409).json({ message: "please try with different username"}); 
+
     const salt=await bcrypt.genSalt(10) ;
     const hashedPassword=await bcrypt.hash(request.body.password,salt) ;
 

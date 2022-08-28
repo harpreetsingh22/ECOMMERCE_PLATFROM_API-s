@@ -1,6 +1,7 @@
 import { request, response } from "express";
 import catalog from "../models/catalog-schema.js";
 import order from "../models/order-schema.js";
+import user from "../models/user-schema.js";
 
 
 export const getSellers=async(request,response)=>{
